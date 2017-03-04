@@ -3,9 +3,16 @@ import { connect } from 'react-redux';
 
 class BookDetail extends Component {
   render() {
+    if (!this.props.books) {
+      return <div>Select a book to get started.</div>;
+    }
+
+    console.log(this.props.book.title);
     return (
       <div>
-        BookDetail!
+        <h3>Details for: </h3>
+        <div>{this.props.book.title}</div>
+        <div>{this.props.book.pages}</div>
       </div>
     )
   }
@@ -13,7 +20,7 @@ class BookDetail extends Component {
 
 // export default BookDetail
 function mapStateToProps(state) {
-  // Whatever is returned from here will show up as props inside of BookList
+  // Whatever is returned from here will show up as props inside of BookDetail
   return {
     book: state.activeBook
   };
